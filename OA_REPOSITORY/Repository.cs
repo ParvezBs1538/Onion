@@ -18,6 +18,19 @@ namespace OA_REPOSITORY
             this.context = context;
             entities = context.Set<T>();
         }
+
+        public void Insert(T entity)
+        {
+            entities.Add(entity);
+            context.SaveChanges();
+        }
+
+        public void Update(T entity)
+        {
+            entities.Update(entity);
+            context.SaveChanges();
+        }
+
         public void Delete(T entity)
         {
             entities.Remove(entity);
@@ -39,18 +52,7 @@ namespace OA_REPOSITORY
             return entities.SingleOrDefault(x => x.Id == id);
         }
 
-        public void Insert(T entity)
-        {
-            entities.Add(entity);
-            context.SaveChanges();
-        }
-
         public void SaveChanges()
-        {
-            context.SaveChanges();
-        }
-
-        public void Update(T entity)
         {
             context.SaveChanges();
         }

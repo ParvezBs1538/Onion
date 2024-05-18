@@ -49,6 +49,7 @@ namespace OA_SERVICE
 
         public void UpdateProduct(Product entity)
         {
+            db.Update(entity);
             db.SaveChanges();
         }
     }

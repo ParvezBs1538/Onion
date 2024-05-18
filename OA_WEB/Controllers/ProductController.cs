@@ -40,5 +40,22 @@ namespace OA_WEB.Controllers
             var item = _product.ProductDetails(id);
             return View(item);
         }
+        public IActionResult Edit(int id)
+        {
+            var item = _product.GetProductId(id);
+            return View(item);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                _product.UpdateProduct(product);
+                return RedirectToAction("Index");
+            }
+            return View(product);
+        }
+
     }
 }
