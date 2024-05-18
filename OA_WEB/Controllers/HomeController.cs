@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using OA_SERVICE;
 using OA_WEB.Models;
 using System.Diagnostics;
 
@@ -8,18 +7,15 @@ namespace OA_WEB.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IProductService product;
-        public HomeController(ILogger<HomeController> logger, IProductService pro)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            product = pro;
         }
 
         public IActionResult Index()
         {
-            return View(product.GetProduct());  
+            return View();
         }
-
         public IActionResult Privacy()
         {
             return View();

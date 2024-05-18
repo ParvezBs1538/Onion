@@ -15,5 +15,6 @@ namespace OA_REPOSITORY
         void SaveChanges();
         IEnumerable<T> GetAll();
         T GetId(int id);
+        T Details(int id);
     }
 }

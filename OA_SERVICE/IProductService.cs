@@ -9,11 +9,12 @@ namespace OA_SERVICE
 {
     public interface IProductService
     {
-        void Insert(Product entity);
-        void Update(Product entity);
-        void Delete(int Id);
+        void InsertProduct(Product entity);
+        void UpdateProduct(Product entity);
+        void DeleteProduct(int Id);
         void SaveChanges();
         IEnumerable<Product> GetProduct();
         Product GetProductId(int id);
+        Product ProductDetails(int id);
     }
 }

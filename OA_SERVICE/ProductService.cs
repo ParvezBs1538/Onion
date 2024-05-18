@@ -15,11 +15,16 @@ namespace OA_SERVICE
         {
             db = _db;
         }
-        public void Delete(int id)
+        public void DeleteProduct(int id)
         {
             Product pro = GetProductId(id);
             db.Delete(pro);
             db.SaveChanges();
+        }
+
+        public Product ProductDetails(int id)
+        {
+            return db.GetId(id);
         }
 
         public IEnumerable<Product> GetProduct()
@@ -32,7 +37,7 @@ namespace OA_SERVICE
             return db.GetId(id);
         }
 
-        public void Insert(Product entity)
+        public void InsertProduct(Product entity)
         {
             db.Insert(entity);
         }
@@ -42,7 +47,7 @@ namespace OA_SERVICE
             db.SaveChanges();
         }
 
-        public void Update(Product entity)
+        public void UpdateProduct(Product entity)
         {
             db.SaveChanges();
         }

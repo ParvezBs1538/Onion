@@ -10,22 +10,28 @@ namespace OA_REPOSITORY
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {
-        private readonly MyDbContext _db;
+        private readonly MyDbContext context;
         private readonly DbSet<T> entities;
-        public Repository(MyDbContext myDb)
+
+        public Repository(MyDbContext context)
         {
-            _db = myDb;
-            entities = _db.Set<T>();
+            this.context = context;
+            entities = context.Set<T>();
         }
         public void Delete(T entity)
         {
             entities.Remove(entity);
-            _db.SaveChanges();
+            context.SaveChanges();
+        }
+
+        public T Details(int id)
+        {
+            return GetId(id);
         }
 
         public IEnumerable<T> GetAll()
         {
-            return entities.AsEnumerable();
+            return entities.ToList();
         }
 
         public T GetId(int id)
@@ -36,17 +42,17 @@ namespace OA_REPOSITORY
         public void Insert(T entity)
         {
             entities.Add(entity);
-            _db.SaveChanges();
+            context.SaveChanges();
         }
 
         public void SaveChanges()
         {
-            _db.SaveChanges();
+            context.SaveChanges();
         }
 
         public void Update(T entity)
         {
-            _db.SaveChanges();
+            context.SaveChanges();
         }
     }
 }
