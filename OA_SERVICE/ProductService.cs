@@ -19,7 +19,7 @@ namespace OA_SERVICE
         {
             Product pro = GetProductId(id);
             db.Delete(pro);
-            db.SaveChanges();
+            //db.SaveChanges();
         }
 
         public Product ProductDetails(int id)
@@ -50,7 +50,7 @@ namespace OA_SERVICE
         public void UpdateProduct(Product entity)
         {
             db.Update(entity);
-            db.SaveChanges();
+            //db.SaveChanges();
         }
     }
 }

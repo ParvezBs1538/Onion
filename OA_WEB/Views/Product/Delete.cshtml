@@ -1,0 +1,42 @@
+﻿@model OA_Data.Product
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<form method="post" asp-action="Delete">
+    <div>
+        <h4>Category</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                Product Name
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Pro_Name)
+            </dd>
+            <dt class="col-sm-2">
+                Description
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Pro_Description)
+            </dd>
+            <dt class="col-sm-2">
+                Quantity
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Pro_Qty)
+            </dd>
+            <dt class="col-sm-2">
+                Price
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Pro_Price)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+        <a class="btn btn-primary" asp-action="Index">Back to List</a>
+    </div>
+</form>

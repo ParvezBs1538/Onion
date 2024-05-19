@@ -16,7 +16,14 @@ namespace OA_WEB.Controllers
             var item = _product.GetProduct();
             return View(item);
         }
+        [HttpGet]
         public IActionResult Delete(int id)
+        {
+            var item = _product.GetProductId(id);
+            return View(item);
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePost(int id)
         {
             _product.DeleteProduct(id);
             return RedirectToAction("Index", "Product");
