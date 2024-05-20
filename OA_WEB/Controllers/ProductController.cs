@@ -11,54 +11,54 @@ namespace OA_WEB.Controllers
         {
             _product = product;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var item = _product.GetProduct();
+            var item = await _product.GetProduct();
             return View(item);
         }
         [HttpGet]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var item = _product.GetProductId(id);
+            var item = await _product.GetProductId(id);
             return View(item);
         }
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeletePost(int id)
+        public async Task<IActionResult> DeletePost(int id)
         {
-            _product.DeleteProduct(id);
+            await _product.DeleteProduct(id);
             return RedirectToAction("Index", "Product");
         }
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Product product)
+        public async Task<IActionResult> Create(Product product)
         {
             if (ModelState.IsValid)
             {
-                _product.InsertProduct(product);
+                await _product.InsertProduct(product);
                 return RedirectToAction("Index");
             }
             return View(product);
         }
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var item = _product.ProductDetails(id);
+            var item = await _product.ProductDetails(id);
             return View(item);
         }
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var item = _product.GetProductId(id);
+            var item = await _product.GetProductId(id);
             return View(item);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Product product)
+        public async Task<IActionResult> Edit(Product product)
         {
             if (ModelState.IsValid)
             {
-                _product.UpdateProduct(product);
+                await _product.UpdateProduct(product);
                 return RedirectToAction("Index");
             }
             return View(product);

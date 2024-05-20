@@ -15,42 +15,42 @@ namespace OA_SERVICE
         {
             db = _db;
         }
-        public void DeleteProduct(int id)
+        public async Task DeleteProduct(int id)
         {
-            Product pro = GetProductId(id);
-            db.Delete(pro);
+            Product pro = await GetProductId(id);
+            await db.Delete(pro);
             //db.SaveChanges();
         }
 
-        public Product ProductDetails(int id)
+        public async Task<Product> ProductDetails(int id)
         {
-            return db.GetId(id);
+            //return db.GetById(id);
+            return await GetProductId(id);
         }
 
-        public IEnumerable<Product> GetProduct()
+        public async Task<IEnumerable<Product>> GetProduct()
         {
-            return db.GetAll();
+            return await db.GetAll();
         }
 
-        public Product GetProductId(int id)
+        public async Task<Product> GetProductId(int id)
         {
-            return db.GetId(id);
+            return await db.GetById(id);
         }
 
-        public void InsertProduct(Product entity)
+        public async Task InsertProduct(Product entity)
         {
-            db.Insert(entity);
+            await db.Insert(entity);
         }
 
-        public void SaveChanges()
+        public async Task SaveChanges()
         {
-            db.SaveChanges();
+            await db.SaveChanges();
         }
 
-        public void UpdateProduct(Product entity)
+        public async Task UpdateProduct(Product entity)
         {
-            db.Update(entity);
-            //db.SaveChanges();
+            await db.Update(entity);
         }
     }
 }

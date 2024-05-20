@@ -9,12 +9,12 @@ namespace OA_SERVICE
 {
     public interface IProductService
     {
-        void InsertProduct(Product entity);
-        void UpdateProduct(Product entity);
-        void DeleteProduct(int Id);
-        void SaveChanges();
-        IEnumerable<Product> GetProduct();
-        Product GetProductId(int id);
-        Product ProductDetails(int id);
+        Task InsertProduct(Product entity);
+        Task UpdateProduct(Product entity);
+        Task DeleteProduct(int Id);
+        Task SaveChanges();
+        Task<IEnumerable<Product>> GetProduct();
+        Task<Product> GetProductId(int id);
+        Task<Product> ProductDetails(int id);
     }
 }

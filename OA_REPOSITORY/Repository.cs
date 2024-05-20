@@ -24,54 +24,54 @@ namespace OA_REPOSITORY
         #endregion
 
         #region Insert
-        public void Insert(T entity)
+        public async Task Insert(T entity)
         {
-            entities.Add(entity);
-            context.SaveChanges();
+            await entities.AddAsync(entity);
+            await context.SaveChangesAsync();
         }
         #endregion
 
         #region Update
-        public void Update(T entity)
+        public async Task Update(T entity)
         {
             entities.Update(entity);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
         #endregion
 
         #region Delete
-        public void Delete(T entity)
+        public async Task Delete(T entity)
         {
             entities.Remove(entity);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
         #endregion
 
         #region Details
-        public T Details(int id)
+        public async Task<T> Details(int id)
         {
-            return GetId(id);
+            return await GetById(id);
         }
         #endregion
 
         #region GetAll
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            return entities.ToList();
+            return await entities.ToListAsync();
         }
         #endregion
 
         #region GetId
-        public T GetId(int id)
+        public async Task<T> GetById(int id)
         {
-            return entities.SingleOrDefault(x => x.Id == id);
+            return await entities.SingleOrDefaultAsync(x => x.Id == id);
         }
         #endregion
 
         #region SaveChanges
-        public void SaveChanges()
+        public async Task SaveChanges()
         {
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
         #endregion
     }
