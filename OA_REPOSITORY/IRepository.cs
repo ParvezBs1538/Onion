@@ -9,12 +9,12 @@ namespace OA_REPOSITORY
 {
     public interface IRepository<T> where T : BaseEntity
     {
-        Task Insert(T entity);
-        Task Update(T entity);
-        Task Delete(T entity);
-        Task SaveChanges();
-        Task<IEnumerable<T>> GetAll();
-        Task<T> GetById(int id);
-        Task<T> Details(int id);
+        Task InsertT(T entity);
+        Task UpdateT(T entity);
+        Task DeleteT(T entity);
+        Task SaveChangesT();
+        Task<IEnumerable<T>> GetAllT();
+        Task<T> GetByIdT(int id);
+        Task<T> DetailsT(int id);
     }
 }

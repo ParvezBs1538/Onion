@@ -18,7 +18,7 @@ namespace OA_SERVICE
         public async Task DeleteProduct(int id)
         {
             Product pro = await GetProductId(id);
-            await db.Delete(pro);
+            await db.DeleteT(pro);
             //db.SaveChanges();
         }
 
@@ -30,27 +30,27 @@ namespace OA_SERVICE
 
         public async Task<IEnumerable<Product>> GetProduct()
         {
-            return await db.GetAll();
+            return await db.GetAllT();
         }
 
         public async Task<Product> GetProductId(int id)
         {
-            return await db.GetById(id);
+            return await db.GetByIdT(id);
         }
 
         public async Task InsertProduct(Product entity)
         {
-            await db.Insert(entity);
+            await db.InsertT(entity);
         }
 
         public async Task SaveChanges()
         {
-            await db.SaveChanges();
+            await db.SaveChangesT();
         }
 
         public async Task UpdateProduct(Product entity)
         {
-            await db.Update(entity);
+            await db.UpdateT(entity);
         }
     }
 }
